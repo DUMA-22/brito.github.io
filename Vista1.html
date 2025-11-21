@@ -1,37 +1,91 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Vista1</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conceptos y Herramientas</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    .tabs { display: flex; cursor: pointer; margin-bottom: 10px; flex-wrap: wrap; }
+    .tab { padding: 10px 20px; border: 1px solid #ccc; border-bottom: none; margin-right: 5px; }
+    .tab.active { background-color: #f0f0f0; font-weight: bold; }
+    .tab-content { border: 1px solid #ccc; padding: 20px; display: none; }
+    .tab-content.active { display: block; }
+    img { max-width: 100%; height: auto; margin-top: 10px; }
+  </style>
 </head>
 <body>
 
-<header>
-    <h1>Vista1</h1>
-</header>
+  <h1>Conceptos y Herramientas</h1>
 
-<section>
-<h1>Conceptos de Cloud Computing y Acceso Remoto</h1>
+  <!-- Pestañas -->
+  <div class="tabs">
+    <div class="tab active" onclick="showTab('cloud')">Cloud Computing</div>
+    <div class="tab" onclick="showTab('saas')">SaaS, PaaS e IaaS</div>
+    <div class="tab" onclick="showTab('virtualizacion')">Virtualización</div>
+    <div class="tab" onclick="showTab('docker')">Docker</div>
+    <div class="tab" onclick="showTab('anydesk')">Anydesk</div>
+    <div class="tab" onclick="showTab('teamviewer')">TeamViewer</div>
+  </div>
 
-    <div class="tabs">
-        <div class="tab active" onclick="showTab(1)">Cloud</div>
-    </div>
+  <!-- Pestaña Cloud Computing -->
+  <div id="cloud" class="tab-content active">
+    <h2>¿Qué es Cloud Computing?</h2>
+    <p>El Cloud Computing es la entrega de servicios informáticos a través de Internet, incluyendo almacenamiento, bases de datos, servidores, redes y software.</p>
+    <img src="imag/Cloud.jpg" alt="Ilustración Cloud Computing">
+  </div>
 
-    <div id="tab1" class="content active">
-        <h2>Cloud Computing</h2>
-        <p><strong>Cloud Computing:</strong> Es la entrega de servicios informáticos (almacenamiento, servidores, bases de datos, redes y software) a través de Internet, permitiendo acceder a recursos sin necesidad de tenerlos físicamente.</p>
+  <!-- Pestaña SaaS, PaaS e IaaS -->
+  <div id="saas" class="tab-content">
+    <h2>SaaS, PaaS e IaaS</h2>
+    <ul>
+      <li><b>SaaS:</b> Aplicaciones listas para usar, como Gmail o Dropbox.</li>
+      <li><b>PaaS:</b> Plataformas para desarrollar aplicaciones sin gestionar la infraestructura, como Heroku.</li>
+      <li><b>IaaS:</b> Infraestructura virtualizada, como servidores y almacenamiento, por ejemplo Amazon EC2.</li>
+    </ul>
+    <img src="imag/SaaS.jpg" alt="Ilustración SaaS, PaaS e IaaS">
+  </div>
 
-        <p><strong>SaaS, PaaS e IaaS:</strong><br>
-        <strong>SaaS (Software as a Service):</strong> Software disponible por Internet, sin instalar, ejemplo: Google Docs, Zoom.<br>
-        <strong>PaaS (Platform as a Service):</strong> Plataforma que permite desarrollar y desplegar aplicaciones, ejemplo: Heroku, Google App Engine.<br>
-        <strong>IaaS (Infrastructure as a Service):</strong> Infraestructura como servicio: servidores, almacenamiento y redes virtuales, ejemplo: AWS, Microsoft Azure.</p>
+  <!-- Pestaña Virtualización -->
+  <div id="virtualizacion" class="tab-content">
+    <h2>¿Qué es Virtualización?</h2>
+    <p>Creación de versiones virtuales de recursos físicos para aprovecharlos mejor.</p>
+    <img src="imag/Virtualización.jpg" alt="Ilustración Virtualización">
+  </div>
 
-        <p><strong>Virtualización:</strong> Creación de una versión virtual de un recurso físico, como un servidor o sistema operativo, permitiendo ejecutar varios entornos independientes en un mismo hardware.</p>
+  <!-- Pestaña Docker -->
+  <div id="docker" class="tab-content">
+    <h2>¿Qué es Docker?</h2>
+    <p>Docker permite crear, desplegar y ejecutar aplicaciones en contenedores, facilitando la portabilidad del software.</p>
+    <img src="imag/Docker.jpg" alt="Ilustración Docker">
+  </div>
 
-        <p><strong>Docker:</strong> Plataforma que permite crear, desplegar y ejecutar aplicaciones en contenedores, los cuales incluyen todo lo necesario para que el software funcione de manera consistente en cualquier entorno.</p>
-    </div>
-</section>
+  <!-- Pestaña Anydesk -->
+  <div id="anydesk" class="tab-content">
+    <h2>Anydesk</h2>
+    <p>Herramienta para acceder y controlar remotamente otro ordenador de manera segura y rápida.</p>
+    <img src="imag/Anydesk.png" alt="Ilustración Anydesk">
+  </div>
+
+  <!-- Pestaña TeamViewer -->
+  <div id="teamviewer" class="tab-content">
+    <h2>TeamViewer</h2>
+    <p>Software de control remoto que facilita soporte técnico y colaboración entre dispositivos.</p>
+    <img src="imag/TeamViewer.png" alt="Ilustración TeamViewer">
+  </div>
+
+  <script>
+    function showTab(tabId) {
+      document.querySelectorAll('.tab, .tab-content').forEach(el => el.classList.remove('active'));
+      // Activar la pestaña correspondiente
+      const tabs = document.querySelectorAll('.tab');
+      const tabIndex = Array.from(tabs).findIndex(tab => tab.getAttribute('onclick').includes(tabId));
+      if(tabIndex >= 0) tabs[tabIndex].classList.add('active');
+      // Mostrar contenido
+      document.getElementById(tabId).classList.add('active');
+    }
+  </script>
 
 </body>
 </html>
+
